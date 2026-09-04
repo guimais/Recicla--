@@ -1,0 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+	--cor-texto: #111111;
+	--cor-texto-suave: #8a8a8a;
+	--cor-borda: #e4e4e4;
+	--cor-fundo: #ffffff;
+	--cor-papel: #2e6be6;
+	--cor-plastico: #e8453c;
+	--cor-vidro: #2fa84f;
+	--cor-metal: #e9b62c;
+	--cor-organico: #b4611f;
+	--cor-eletronico: #111111;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+	color: var(--cor-texto);
+	background-color: var(--cor-fundo);
+	background-image: radial-gradient(#ececec 1px, transparent 1px);
+	background-size: 26px 26px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.tela {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 40px 24px;
+}
+
+.tela[hidden] {
+	display: none;
+}
+
+.rotulo-superior,
+.pergunta-do-desafio {
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--cor-texto-suave);
+	margin-bottom: 16px;
+}
+
+.titulo-do-jogo {
+	font-size: 64px;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	margin-bottom: 20px;
+}
+
+.frase-de-apoio {
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 1.6;
+	color: #6b6b6b;
+	margin-bottom: 32px;
+}
+
+.botao-principal {
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 600;
+	color: #ffffff;
+	background-color: var(--cor-texto);
+	border: none;
+	border-radius: 8px;
+	padding: 14px 28px;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(17, 17, 17, 0.12);
+	transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.18s ease;
+}
+
+
+.botao-principal:hover {
+	background-color: #333333;
+	transform: translateY(-2px);
+}
+
+.botao-principal:active {
+	transform: translateY(0) scale(0.98);
+}
+
+.barra-de-progresso {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--cor-borda);
+	margin-bottom: 48px;
+}
+
+.contador-de-desafios {
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--cor-texto-suave);
+}
+
+.placar {
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+.nome-do-residuo {
+	font-size: 48px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin-bottom: 40px;
+}
+
+.lista-de-categorias {
+	width: 100%;
+	max-width: 800px;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 12px;
+}
+
+.botao-categoria {
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--cor-da-categoria, var(--cor-texto));
+	background-color: var(--cor-fundo);
+	border: 1px solid var(--cor-borda);
+	border-radius: 10px;
+	padding: 22px 10px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, transform 0.18s ease;
+}
+
+.botao-categoria::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: currentColor;
+}
+
+.botao-categoria:hover {
+	border-color: #bcbcbc;
+	box-shadow: 0 4px 10px rgba(17, 17, 17, 0.07);
+	transform: translateY(-2px);
+}
+
+.botao-categoria:active {
+	transform: translateY(0) scale(0.98);
+}
+
+.botao-categoria[data-categoria="PAPEL"] {
+	--cor-da-categoria: var(--cor-papel);
+}
+
+.botao-categoria[data-categoria="PLASTICO"] {
+	--cor-da-categoria: var(--cor-plastico);
+}
+
+.botao-categoria[data-categoria="VIDRO"] {
+	--cor-da-categoria: var(--cor-vidro);
+}
+
+.botao-categoria[data-categoria="METAL"] {
+	--cor-da-categoria: var(--cor-metal);
+}
+
+.botao-categoria[data-categoria="ORGANICO"] {
+	--cor-da-categoria: var(--cor-organico);
+}
+
+.botao-categoria[data-categoria="ELETRONICO"] {
+	--cor-da-categoria: var(--cor-eletronico);
+}
+
+.botao-categoria.escolha-certa {
+	color: #ffffff;
+	background-color: var(--cor-da-categoria);
+	border-color: var(--cor-da-categoria);
+}
+
+.botao-categoria.escolha-errada {
+	opacity: 0.35;
+}
+
+.mensagem-de-feedback {
+	font-size: 15px;
+	color: #6b6b6b;
+	min-height: 24px;
+	margin-top: 40px;
+	animation: surgir 0.3s ease;
+}
+
+@keyframes surgir {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.botao-discreto {
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--cor-texto-suave);
+	background: none;
+	border: none;
+	padding: 8px 12px;
+	margin-top: 28px;
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+
+.botao-discreto:hover {
+	color: var(--cor-texto);
+}
+
+.resultado-final {
+	font-size: 48px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin-bottom: 20px;
+}
+
+:focus-visible {
+	outline: 2px solid var(--cor-texto);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.botao-principal,
+	.botao-categoria,
+	.mensagem-de-feedback {
+		transition: none;
+		animation: none;
+		transform: none;
+	}
+}
+
+@media (max-width: 720px) {
+	.tela {
+		padding: 32px 20px;
+	}
+
+	.titulo-do-jogo {
+		font-size: 44px;
+	}
+
+	.nome-do-residuo {
+		font-size: 34px;
+		margin-bottom: 28px;
+	}
+
+	.barra-de-progresso {
+		margin-bottom: 40px;
+	}
+
+	.lista-de-categorias {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 420px;
+	}
+
+	.mensagem-de-feedback {
+		margin-top: 28px;
+	}
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recicla+ | Jogo educativo de separação de resíduos</title>
+	<meta name="description" content="Jogo gratuito que ensina a separar o lixo. Descubra se a garrafa PET é plástico e onde jogar pilhas, e aprenda a reciclar de verdade.">
+	<meta name="author" content="Projeto Recicla+">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://reciclamais.com.br/">
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:site_name" content="Recicla+">
+	<meta property="og:title" content="Recicla+ | Jogo educativo de separação de resíduos">
+	<meta property="og:description" content="Aprenda a separar resíduos, uma escolha de cada vez. Dez desafios rápidos sobre papel, plástico, vidro, metal, orgânico e eletrônico.">
+	<meta property="og:url" content="https://reciclamais.com.br/">
+	<meta property="og:image" content="https://reciclamais.com.br/assets/img/recicla-mais-compartilhamento.png">
+	<meta property="og:image:alt" content="Tela do jogo Recicla+ com as seis categorias de resíduos">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+    <body>
+        <main id="tela-inicial" class="tela">
+            <p class="rotulo-superior">Jogo educativo</p>
+                <h1 class="titulo-do-jogo">Recicla+</h1>
+            <p class="frase-de-apoio">Aprenda a separar resíduos,<br>uma escolha de cada vez.</p>
+            <button type="button" id="botao-comecar" class="botao-principal">Começar</button>
+        </main>
+
+        <main id="tela-do-jogo" class="tela" hidden>
+            <header class="barra-de-progresso">
+                <p class="contador-de-desafios">Desafio <span id="numero-do-desafio">01</span> / <span id="total-de-desafios">10</span></p>
+                <p class="placar"><span id="pontuacao-atual">000</span> pts</p>
+            </header>
+            <p class="pergunta-do-desafio">Onde este resíduo deve ir?</p>
+                <h2 id="nome-do-residuo" class="nome-do-residuo">Garrafa PET</h2>
+                <section class="lista-de-categorias" aria-label="Escolha a categoria do resíduo">
+                    <button type="button" class="botao-categoria" data-categoria="PAPEL">Papel</button>
+                    <button type="button" class="botao-categoria" data-categoria="PLASTICO">Plástico</button>
+                    <button type="button" class="botao-categoria" data-categoria="VIDRO">Vidro</button>
+                    <button type="button" class="botao-categoria" data-categoria="METAL">Metal</button>
+                    <button type="button" class="botao-categoria" data-categoria="ORGANICO">Orgânico</button>
+                    <button type="button" class="botao-categoria" data-categoria="ELETRONICO">Eletrônico</button>
+                </section>
+            <p id="mensagem-de-feedback" class="mensagem-de-feedback" role="status" aria-live="polite"></p>
+            <p id="mensagem-de-feedback" class="mensagem-de-feedback" role="status" aria-live="polite"></p>
+		    <button type="button" id="botao-sair" class="botao-discreto">Sair da partida</button>
+        </main>
+
+        <main id="tela-de-resultado" class="tela" hidden>
+            <p class="rotulo-superior">Sessão concluída</p>
+                <h2 class="resultado-final">Você fez <span id="total-de-acertos">8</span> de <span id="total-de-residuos">10</span></h2>
+            <p class="frase-de-apoio">Cada escolha conta para um<br>futuro com menos desperdício.</p>
+            <button type="button" id="botao-jogar-de-novo" class="botao-principal">Jogar de novo</button>
+        </main>
+
+        <script src="js/residuos.js"></script>
+        <script src="js/jogo.js"></script>
+    </body>
+</html>
