@@ -7,13 +7,13 @@ const telaDoJogo = document.getElementById("tela-do-jogo");
 const telaDeResultado = document.getElementById("tela-de-resultado");
 const botaoComecar = document.getElementById("botao-comecar");
 const botaoJogarDeNovo = document.getElementById("botao-jogar-de-novo");
+const botaoSair = document.getElementById("botao-sair");
 const botoesDeCategoria = document.querySelectorAll(".botao-categoria");
 const numeroDoDesafio = document.getElementById("numero-do-desafio");
 const nomeDoResiduo = document.getElementById("nome-do-residuo");
 const pontuacaoAtual = document.getElementById("pontuacao-atual");
 const mensagemDeFeedback = document.getElementById("mensagem-de-feedback");
 const totalDeAcertos = document.getElementById("total-de-acertos");
-const botaoSair = document.getElementById("botao-sair");
 
 let residuosDaPartida = [];
 let indiceDoDesafio = 0;
@@ -89,11 +89,11 @@ function responder(categoriaEscolhida) {
 	} else {
 		mostrarFeedback("Ops! " + residuo.nome + " deve ir em " + rotuloDaCategoria(residuo.categoria) + ".");
 	}
-	setTimeout(avancar, TEMPO_DE_LEITURA);
-    temporizador = setTimeout(avancar, TEMPO_DE_LEITURA);
+	temporizador = setTimeout(avancar, TEMPO_DE_LEITURA);
 }
 
 function iniciarPartida() {
+	clearTimeout(temporizador);
 	residuosDaPartida = sortearResiduos();
 	indiceDoDesafio = 0;
 	pontuacao = 0;
@@ -108,16 +108,14 @@ function encerrarPartida() {
 	mostrarTela(telaDeResultado);
 }
 
-botaoComecar.addEventListener("click", iniciarPartida);
-botaoJogarDeNovo.addEventListener("click", iniciarPartida);
-botoesDeCategoria.forEach((botao) => {
-	botao.addEventListener("click", () => responder(botao.dataset.categoria));
-});
-
 function sairDaPartida() {
 	clearTimeout(temporizador);
 	mostrarTela(telaInicial);
 }
 
 botaoComecar.addEventListener("click", iniciarPartida);
+botaoJogarDeNovo.addEventListener("click", iniciarPartida);
 botaoSair.addEventListener("click", sairDaPartida);
+botoesDeCategoria.forEach((botao) => {
+	botao.addEventListener("click", () => responder(botao.dataset.categoria));
+});
